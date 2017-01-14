@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}" /
+</head>
+
+<body>
+<div id = "header" background = "black">
+<h1><b><center>What do u want to monitor </b><center></h1>
+
+</div>
+<div id = "left">
+</br></br></br></br></br></br>
+<center>
+<p><i>Displays about top ports and top talkers</i> </p>
+<form method="get" action="http://127.0.0.1:8000/dashboard">
+ <input type="submit" value="Dashboard">
+</center>
+</br></br></br></br></br></br>
+</form>
+</div>
+<div id = "right">
+</br></br></br></br></br></br>
+<center>
+<p> <i>Displays historical data </i></p>
+<form method="get" action="http://127.0.0.1:8000/historical">
+<input type="submit" value="Historical Search">
+</center>
+</br></br></br></br></br></br>
+</form>
+</div>
+<div id = "footer">
+{% load staticfiles %}
+<img src="{% static "blog/images/ctrls_6.jpg" %}" alt="My image"/>
+</div>
+</body>
+</html>
