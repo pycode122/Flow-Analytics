@@ -1,0 +1,50 @@
+<html>
+<style>
+#body{
+background : white url("images/background.gif") no-repeat right bottom;
+    background-size: cover;
+
+}
+#header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;
+    clear : both;
+}
+#left{
+    background : white url("images/background.gif") no-repeat right bottom;
+    background-size: cover;
+    height : auto;
+    width : 30%;
+    float:left;
+    padding:15px;
+
+}
+#right{
+    background : url("images/background.gif") ;
+    background-size: cover;
+    padding-top: 100cm;
+    height : auto;
+    width : 30%;
+    float:right;
+    padding:15px;
+
+}
+
+
+input[type=submit] {
+    width:15em;
+    height : 3em;
+    margin: 25px;
+
+}
+#footer {
+    color:white;
+    text-align:center;
+    padding:5px;
+    clear : both;
+}
+
+</style>
+</html>
