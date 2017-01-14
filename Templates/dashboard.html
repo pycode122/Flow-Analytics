@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart",'timeline']});
+    google.charts.setOnLoadCallback(drawChart);
+</script>
+<head>
+<style>
+#header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+#section_left {
+    line-height:30px;
+    height:auto;
+    width:50%;
+    table-layout: fixed;
+
+    float:left;
+    padding:5px;
+}
+#section_middle {
+    width:48%;
+    height:auto;
+
+    float:left;
+    padding:5px;
+}
+#section_right {
+    height:300px;
+    width : 100px;
+    float:left;
+    padding:5px;
+}
+#section_footer {
+
+    height:auto;
+    clear:both;
+    color:black;
+   padding:5px;
+}
+#chart_2 {
+    clear:both;
+}
+table {
+width:100%;
+}
+</style>
+</head>
+<body>
+
+<div id="header">
+<h1>Dashboard</h1>
+</div>
+
+<div id="section_footer">
+<center><h3>{{g}} </h3>
+<div id = "chart_1">{{chart_1.as_html}} </div>
+</center></div>
+<div id="section_left">
+<center><h3> TOP Talkers </h3>
+<table>
+<form method = "post" action = "http://127.0.0.1:8000/dashboard/">
+{% csrf_token %}
+<tr>
+<td>
+<select name="top_talkers_for">
+<option value = "talkers_pps">Talkers-PPS</option>
+<option value = "talkers_bandwidth">Talkers-Bandwidth</option>
+
+</td>
+</tr>
+<tr>
+<td>
+<input type="submit" name="Show Analysis" value="submit">
+</td>
+</tr>
+<!--<p>{{query}}</p>-->
+<center>
+{% for i in query_1 %}
+    <table border = 1px >
+    <tr>
+    <th>source ip</th>
+<th>destination ip</th>
+    <th>bandwidth</th>
+    </tr>
+    <tr>
+    <td>{{ i.source_ip }} </td>
+    <td>{{ i.destination_ip }} </td>
+    <td>{{ i.bandwidth }} </td>
+    </tr>
+    </table>
+{% endfor %}
+{% for i in query_2 %}
+    <table border = 1px >
+    <tr>
+    <th>source ip</th>
+    <th>destination ip</th>
+    <th>pps</th>
+    </tr>
+    <tr>
+    <td>{{ i.source_ip }} </td>
+    <td>{{ i.destination_ip }} </td>
+    <td>{{ i.pps }} </td>
+    </tr>
+    </table>
+{% endfor %}
+</center>
+
+</form>
+</table>
+</center>
+</div>
+
+<div id="section_middle">
+<center><h3> TOP Ports </h3>
+<table>
+<form method = "post" action = "http://127.0.0.1:8000/dashboard/">
+{% csrf_token %}
+<tr>
+<td>
+<!--<select name="top_ports_for">-->
+<select name="top_talkers_for">
+<option value = "ports_pps"> ports-PPS</option>
+<option value = "ports_bandwidth"> ports-Bandwidth</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>
+<input type="submit" name="Show Analysis" value="submit">
+</td>
+</tr>
+</table>
+<center>
+{% for i in query_3 %}
+    <table border = 1px >
+    <tr>
+    <th>source port</th>
+    <th>destination port</th>
+    <th>bandwidth</th>
+    </tr>
+    <tr>
+    <td>{{ i.source_port }} </td>
+    <td>{{ i.destination_port }} </td>
+    <td>{{ i.bandwidth_port }} </td>
+    </tr>
+    </table>
+{% endfor %}
+{% for i in query_4 %}
+    <table border = 1px >
+    <tr>
+    <th>source port</th>
+    <th>destination port</th>
+    <th>pps</th>
+    </tr>
+    <tr>
+    <td>{{ i.source_port }} </td>
+    <td>{{ i.destination_port }} </td>
+    <td>{{ i.pps_port }} </td>
+    </tr>
+    </table>
+{% endfor %}
+</center>
+</center>
+</form>
+</div>
+<div id = "chart_2"><center><h3>{{h}} </h3>{{chart_2.as_html}} </div>
+</body>
+</html>
